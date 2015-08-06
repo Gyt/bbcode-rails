@@ -22,11 +22,11 @@ module BBCode
   def self.parse str, raise_error=false
     str = str.dup
 
-    str.gsub!('&', '&amp;')
-    str.gsub!('<', '&lt;')
-    str.gsub!('>', '&gt;')
-    str.gsub!('"', '&quot;')
-    str.gsub!("'", '&apos;')
+    #str.gsub!('&', '&amp;')
+    #str.gsub!('<', '&lt;')
+    #str.gsub!('>', '&gt;')
+    #str.gsub!('"', '&quot;')
+    #str.gsub!("'", '&apos;')
 
     # Let's iterate over the pieces to build a tree
     # It works like this:
@@ -157,12 +157,12 @@ module BBCode
       result_str = result.map(&:to_s).join('').strip
 
       # extracted from bb-ruby, which extracted it from Rails ActionPack
-      start_tag = '<p>'
-      result_str.gsub!(/\r\n?/, "\n")                   # \r\n and \r => \n
-      result_str.gsub!(/\n\n+/, "</p>\n\n#{start_tag}") # 2+ newline  => paragraph
+      #start_tag = '<p>'
+      #result_str.gsub!(/\r\n?/, "\n")                   # \r\n and \r => \n
+      #result_str.gsub!(/\n\n+/, "</p>\n\n#{start_tag}") # 2+ newline  => paragraph
       #result_str.gsub!(/([^\n>]\n)(?=[^\n<])/, '\1<br>')# 1 newline   => br
-      result_str.insert 0, start_tag
-      result_str << '</p>'
+      #result_str.insert 0, start_tag
+      #result_str << '</p>'
     rescue BBCode::ParseError => e
       if raise_error
         raise e
